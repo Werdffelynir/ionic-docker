@@ -68,5 +68,10 @@ RUN cordova telemetry off
 
 WORKDIR ${SOURCE_DIR}
 
+RUN curl -L https://npmjs.org/install.sh | npm_install=${NPM_VERSION} bash
+
 EXPOSE 8100 35729
-CMD ["ionic", "serve"]
+#CMD ["ionic", "serve"]
+CMD cd ../ && ionic create sources
+# && ionic cordova platform add android && ionic cordova build android && ionic cordova run android
+# --save @ionic/cli-plugin-cordova && ionic serve
