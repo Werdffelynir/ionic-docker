@@ -26,9 +26,9 @@ A ionic 1/2 image to be used with Gitlab CI
 ```
 git clone 
 
-docker build --rm -t ionic-docker /var/app/ionic-docker
+docker build --rm -t ionic-image /var/app/ionic-docker
 
-docker run -ti --rm -p 8100:8100 -p 35729:35729 -v /var/app/ionic_project/:/Sources:rw ionic-docker
+docker run -ti --rm -p 8100:8100 -p 35729:35729 -v /var/app/ionic_project/:/Sources:rw ionic-image
 
 ```
 
@@ -36,7 +36,7 @@ docker run -ti --rm -p 8100:8100 -p 35729:35729 -v /var/app/ionic_project/:/Sour
 With this alias:
 
 ```
-alias ionic="docker run -ti --rm -p 8100:8100 -p 35729:35729 --privileged -v /dev/bus/usb:/dev/bus/usb -v ~/.gradle:/root/.gradle -v \$PWD:/myApp:rw marcoturi/ionic ionic"
+alias ionic="docker run -ti --rm -p 8100:8100 -p 35729:35729 --privileged -v /dev/bus/usb:/dev/bus/usb -v ~/.gradle:/root/.gradle -v \$PWD:/myApp:rw ionic-image"
 ```
 
 > Due to a bug in ionic, if you want to use ionic serve, you have to use --net host option :
@@ -69,6 +69,6 @@ ionic cordova run android
 
 ### FAQ
 * The application is not installed on my android device
-    * Try `docker run -ti --rm -p 8100:8100 -p 35729:35729 --privileged -v /dev/bus/usb:/dev/bus/usb -v \$PWD:/myApp:rw marcoturi/ionic adb devices` your device should appear
+    * Try `docker run -ti --rm -p 8100:8100 -p 35729:35729 --privileged -v /dev/bus/usb:/dev/bus/usb -v \$PWD:/myApp:rw ionic-image adb devices` your device should appear
 * The adb devices show nothing whereas I can see it when I do `adb devices` on my computer
     * You can't have adb inside and outside docker at the same time, be sure to `adb kill-server` on your computer before using this image
