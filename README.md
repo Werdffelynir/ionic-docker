@@ -11,7 +11,7 @@ A ionic 1/2 image to be used with Gitlab CI
 - Ruby
 - Scss-lint support
 
-##Usage
+## Usage
 
 ```
 git clone https://github.com/Werdffelynir/ionic-docker ./ionic-docker
